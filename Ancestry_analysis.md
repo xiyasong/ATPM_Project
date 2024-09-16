@@ -46,8 +46,8 @@ Merge with 1kGenome:
 
 #### 6.2.3 Way 3 Data pruning (next try)
 
-```plink--bfile test_merged.bed --indep-pairwise 50 10 0.1```
-```plink--bfile test_merged.bed --extract plink.prune.in --make-bed --out prunedData```
+```plink --bfile test_merged --indep-pairwise 50 10 0.1```
+```plink --bfile test_merged --extract plink.prune.in --make-bed --out prunedData_test_merged```
 
 #### 6.3 Run Admixture with CV
 ```for K in 4 5 6 7 8 9 10; do admixture --cv test_subset_1000_samples_2w_snps.bed $K | tee log${K}.out; done``` 
