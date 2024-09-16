@@ -28,7 +28,7 @@ Populations are genetically more similar (like different European populations), 
 #### 6.2.1 Way 1 Extract the 20,000 SNPs and the 1,000 samples:
 ```plink --bfile test_merged --keep combined_1000_samples.txt --thin-count 20000 --make-bed --out test_subset_1000_samples_2w_snps```
 
-#### 6.2.2 Way 2 Select the less distant reference samples , with merged cohort of test samples (42 samples in P0092 project)
+#### 6.2.2 (Ongoing) Way 2 Select the less distant reference samples , with merged cohort of test samples (42 samples in P0092 project)
 ```cd /Users/xiyas/ATPM_Project/Anatolian _project_vcf/P0092_vcf/vcf```
 
 ```for vcf in *.vcf.gz; do tabix -p vcf $vcf done```
@@ -38,9 +38,11 @@ Check and Normalize Your Merged VCF: It’s a good idea to check your merged VCF
 
 ```bcftools norm -m -any -Oz -o P0092_42_samples_merged.normalized.vcf.gz P0092_42_samples_merged.vcf.gz```
 
+```tabix -p vcf P0092_42_samples_merged.normalized.vcf.gz```
+
 Merge with 1kGenome: 
 
-```bcftools merge -Oz -o P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz P0092_42_samples_merged.normalized.vcf.gz 1kgenome_rename.vcf.gz```
+```bcftools merge -Oz -o P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz P0092_42_samples_merged.normalized.vcf.gz /Users/xiyas/ATPM_Project/ancestry_analysis/1kgenome_rename.vcf.gz```
 
 #### 6.2.3 Way 3 Data pruning (next try)
 
