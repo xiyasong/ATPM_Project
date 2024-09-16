@@ -1,3 +1,4 @@
+
 ### 1. 1kgenome dataset pre-processing
 ```for i in {1..20}; do echo -e "$i\tchr$i" >> rename_chrs.txt; done```
 ### 2. 1000G dataset pre-processing
@@ -31,8 +32,15 @@ Populations are genetically more similar (like different European populations), 
 ```cd /Users/xiyas/ATPM_Project/Anatolian _project_vcf/P0092_vcf/vcf```
 
 ```for vcf in *.vcf.gz; do tabix -p vcf $vcf done```
-
 ```bcftools merge -Oz -o P0092_42_samples_merged.vcf.gz P0092_*.hard-filtered.vcf.gz```
+
+Check and Normalize Your Merged VCF: It’s a good idea to check your merged VCF for multiallelic sites or any format inconsistencies. Use bcftools norm to normalize the merged VCF:
+
+```bcftools norm -m -any -Oz -o P0092_42_samples_merged.normalized.vcf.gz P0092_42_samples_merged.vcf.gz```
+
+Merge with 1kGenome: 
+
+```bcftools merge -Oz -o P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz P0092_42_samples_merged.normalized.vcf.gz 1kgenome_rename.vcf.gz```
 
 #### 6.2.3 Way 3 Data pruning (next try)
 
@@ -45,3 +53,5 @@ or run directly with one K
 ```admixture test_subset_1000_samples_2w_snps.bed $5```
 
 
+what I want to make: 
+<img width="564" alt="image" src="https://github.com/user-attachments/assets/e3dd4081-5433-4a5f-ae71-c77b650e58ed">
