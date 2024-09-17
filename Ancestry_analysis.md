@@ -7,7 +7,11 @@
 ```tabix -p vcf 1kgenome_rename.vcf.gz```
 
 ### 4. Merge the test samples with the 1kgenome
-```bcftools merge 1kgenome_rename.vcf.gz P00110_1.hard-filtered.vcf.gz_vep_annotated.vcf.gz -Oz -o test_all_merge.vcf.gz --force-samples --missing-to-ref```
+(XXX)```bcftools merge 1kgenome_rename.vcf.gz P00110_1.hard-filtered.vcf.gz_vep_annotated.vcf.gz -Oz -o test_all_merge.vcf.gz --force-samples --missing-to-ref```
+
+```bcftools merge -Oz -o P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz P0092_42_samples_merged.normalized.vcf.gz /Users/xiyas/ATPM_Project/ancestry_analysis/1kgenome_rename.vcf.gz```
+
+
 ### 5. Making bed file from VCF file
 ```plink --vcf test_all_merge.vcf.gz --chr 1-22 X --make-bed --out test_merged --allow-extra-chr --double-id```
 
