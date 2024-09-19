@@ -11,6 +11,10 @@
 
 ```bcftools merge -Oz -o P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz P0092_42_samples_merged.normalized.vcf.gz /Users/xiyas/ATPM_Project/ancestry_analysis/1kgenome_rename.vcf.gz```
 
+### latest: test with teydep P001_25, P001_26, P001_167,P001_203
+```tabix -p vcf  P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz```
+```bcftools merge -Oz -o P0092_42_samples_merged.normalized.merged_with_1kgenome_teydep.vcf.gz P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz /Users/xiyas/ATPM_Project/P001_167.hard-filtered.vcf.gz_PASS.vcf.gz /Users/xiyas/ATPM_Project/P001_25.hard-filtered.vcf.gz_PASS.vcf.gz /Users/xiyas/ATPM_Project/P001_26.hard-filtered.vcf.gz_PASS.vcf.gz /Users/xiyas/ATPM_Project/P001_203.hard-filtered.vcf.gz_PASS.vcf.gz```
+
 
 ### 5. Making bed file from VCF file
 ```plink --vcf test_all_merge.vcf.gz --chr 1-22 X --make-bed --out test_merged --allow-extra-chr --double-id```
@@ -58,6 +62,10 @@ Merge with 1kGenome:
 or run directly with one K
 ```admixture test_subset_1000_samples_2w_snps.bed $5```
 
+### with P0092_samples:
+plink --vcf P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz --chr 1-22 X --make-bed --out P0092_merged --allow-extra-chr --double-id 
+plink --bfile P0092_merged --keep combined_1000_samples.txt --thin-count 20000 --make-bed --out P0092_subset_1000_samples_2w_snps
+admixture P0092_subset_1000_samples_2w_snps.bed 5
 
 what I want to make: 
 <img width="564" alt="image" src="https://github.com/user-attachments/assets/e3dd4081-5433-4a5f-ae71-c77b650e58ed">
