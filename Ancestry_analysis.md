@@ -67,6 +67,6 @@ plink --vcf P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz --chr
 **with teydep test data**
 plink --vcf P0092_42_samples_merged.normalized.merged_with_1kgenome_teydep.vcf.gz --chr 1-22 X --make-bed  --thin-count 20000 --out P0092_teydep-merged --allow-extra-chr --double-id plink --bfile P0092_merged --keep combined_1000_samples.txt --thin-count 20000 --make-bed --out P0092_subset_1000_samples_2w_snps
 admixture P0092_subset_1000_samples_2w_snps.bed 5
-
+admixture P0092_teydep_subset_1000_samples_2w_snps.bed 5 
 what I want to make: 
 <img width="564" alt="image" src="https://github.com/user-attachments/assets/e3dd4081-5433-4a5f-ae71-c77b650e58ed">
