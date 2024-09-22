@@ -64,7 +64,8 @@ or run directly with one K
 
 ### with P0092_samples:
 plink --vcf P0092_42_samples_merged.normalized.merged_with_1kgenome.vcf.gz --chr 1-22 X --make-bed --out P0092_merged --allow-extra-chr --double-id 
-plink --bfile P0092_merged --keep combined_1000_samples.txt --thin-count 20000 --make-bed --out P0092_subset_1000_samples_2w_snps
+**with teydep test data**
+plink --vcf P0092_42_samples_merged.normalized.merged_with_1kgenome_teydep.vcf.gz --chr 1-22 X --make-bed  --thin-count 20000 --out P0092_teydep-merged --allow-extra-chr --double-id plink --bfile P0092_merged --keep combined_1000_samples.txt --thin-count 20000 --make-bed --out P0092_subset_1000_samples_2w_snps
 admixture P0092_subset_1000_samples_2w_snps.bed 5
 
 what I want to make: 
